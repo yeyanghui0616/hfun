@@ -1,0 +1,19 @@
+//  导航栏高度
+$nav-height:60px;
+//  导航栏颜色
+$nav-background-color:#fff;
+//  菜单文字颜色
+$menu-text-color: #fff;
+//  菜单选中文字颜色
+$menu-active-text-color: hsla(0, 0%, 100%, 0.95);
+//  菜单背景色
+$menu-background-color: #ff0;
+
+:export {
+    //菜单文字颜色变量导出
+    menu-text-color: $menu-text-color;
+    //菜单选中文字颜色变量导出
+    menu-active-text-color: $menu-active-text-color;
+    //菜单背景色变量导出
+    menu-background-color: $menu-background-color;
+}
