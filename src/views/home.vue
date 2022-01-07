@@ -64,9 +64,3 @@
     const count = ref(0)
     // const color = ref('#f00')
 </script>
-
-<style vars="{ color }">
-/* h1{
-    color:var(--color)
-} */
-</style>
