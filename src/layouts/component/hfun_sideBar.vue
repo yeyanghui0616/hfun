@@ -1,12 +1,13 @@
 <!--
- * @Description: 侧边栏
+ * @Description: 侧边导航栏组件-整体
  * @Author: yeyh
  * @Date: 2021-07-21 10:07:26
- * @LastEditTime: 2021-11-08 16:29:58
+ * @LastEditTime: 2021-11-12 17:20:25
 -->
+
 <template>
     <el-scrollbar>
-        <!-- <hfunLogo /> -->
+        <hfunLogo />
         <hfunMenuBar mode='vertical'/>
     </el-scrollbar>
 </template>
@@ -20,6 +21,6 @@
 
     const $store = useStore()
     const onSelectMenu = (index,indexPath,item,routeResult)=>{
-        $store.dispatch('hfun_tag/handleAddTab',indexPath)
+        $store.dispatch('hfun_layout/handleAddTab',indexPath)
     }
 </script> 

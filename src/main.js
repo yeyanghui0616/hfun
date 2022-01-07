@@ -8,6 +8,6 @@ import router from './router'
 import store from './store'
 
 import svgIcon from './icons/index.vue'
-import '@/utils/export'
+import '@/utils/permission'
 
 createApp(App).component('svg-icon', svgIcon).use(store).use(router).use(ElementPlus).mount('#app')

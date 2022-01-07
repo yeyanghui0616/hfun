@@ -1,12 +1,16 @@
+<!--
+ * @Description: 侧边导航菜单栏组件
+ * @Author: yeyanghui
+ * @Date: 2021-11-11 17:51:41
+ * @LastEditTime: 2021-11-12 17:37:15
+-->
+
 <template>
     <el-menu
-        :default-active="$store.state.hfun_tag.mTabActivePath"
-        :class="'main-'+$store.state.hfun_tag.mSystemTheme.mLayoutMode"
+        :default-active="$store.state.hfun_layout.mTabActivePath"
+        :class="'main-'+$store.state.hfun_layout.mSystemTheme.mLayoutMode"
         :mode="props.mode"
-        :collapse="$store.state.hfun_tag.mIsOpenSideBar == 'true' "
-        :background-color="layoutScss2['menu-background-color']"
-        :text-color="layoutScss2['menu-text-color']"
-        :active-text-color="layoutScss2['menu-active-text-color']"
+        :collapse="$store.state.hfun_layout.mIsOpenSideBar == 'true' "
         menu-trigger="hover"
         router
         @select="onSelectMenu"
@@ -36,14 +40,12 @@
     })
     const $store = useStore()
     const onSelectMenu = (index,indexPath,item,routeResult)=>{
-        $store.dispatch('hfun_tag/handleAddTab',indexPath)
+        console.log('indexPath',indexPath)
+        $store.dispatch('hfun_layout/handleAddTab',indexPath)
     }
-    let layoutScss2 = computed(()=>{
-        return layoutScss
-    })
 </script>
 <style lang="scss" scoped>
 .main-vertical{
-    height:100vh
+    height:calc(100% - 90px);
 }
 </style>

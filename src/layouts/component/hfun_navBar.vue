@@ -1,3 +1,10 @@
+<!--
+ * @Description: 顶部导航栏（纵向）
+ * @Author: yeyanghui
+ * @Date: 2021-11-16 09:07:35
+ * @LastEditTime: 2021-11-18 15:38:14
+-->
+
 <template>
     <div class="main">
         <el-row :gutter="15">
@@ -29,6 +36,7 @@
 </script>
 
 <style scoped lang='scss'>
+@import '@/styles/layout';
 
 .main {
     position: relative;
@@ -37,7 +45,7 @@
     padding-left: 20px;
     overflow: hidden;
     user-select: none;
-    background: #fff;
+    background: $hfun-navbar-background;
     box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
     .mainLeft {
@@ -53,16 +61,15 @@
       align-items: center;
       justify-content: flex-end;
       height: 50px;
-
       ::v-deep {
         svg {
           width: 1.2em;
           height: 1.2em;
           margin-right: 1.2em;
           font-size: 12px;
-          color: gray;
+          color: $hfun-navbar-right-icon-color;
           cursor: pointer;
-          fill: gray;
+          fill: $hfun-navbar-right-icon-color;
         }
       }
     }

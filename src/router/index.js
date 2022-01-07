@@ -11,35 +11,46 @@ export const routes = [
         path: '/',
         redirect: '/home',
         component: Layout,
-        meta: { title: '首页'},
         children: [{
             path: '/home',
             name: 'home',
             component: () => import('@/views/home.vue'),
-            meta: { title: '首页' }
+            meta: { title: '首页',icon:'hfun-screenfull-in' }
         }]
+    },
+    {
+        path: '/test',
+        component: Layout,
+        children: [
+            {
+                path: '/test',
+                name: 'test',
+                component: () => import('@/views/test.vue'),
+                meta: { title: '测试',icon:'hfun-screenfull-in' }
+            }
+        ]
     },
     {
         path: '/pageA',
         name: 'pageA',
-        meta: { title: '页面A'},
+        meta: { title: '页面A',icon:'hfun-screenfull-in'},
         component: Layout,
         children: [{
                 path: '/page1',
                 name: 'page1',
-                meta: { title: '页面一'},
+                meta: { title: '页面一',icon:'hfun-screenfull-in'},
                 component: () => import('../views/pageA/page1.vue'),
             },
             {
                 path: '/page2',
                 name: 'page2',
-                meta: { title: '页面三'},
+                meta: { title: '页面三',icon:'hfun-screenfull-in'},
                 component: () => import('../views/pageA/page2.vue'),
             },
             {
                 path: '/page3',
                 name: 'page3',
-                meta: { title: '页面四'},
+                meta: { title: '页面四',icon:'hfun-screenfull-in'},
                 component: () => import('../views/pageA/page3.vue'),
             }
         ]
@@ -47,12 +58,12 @@ export const routes = [
     {
         path: '/pageB',
         name: 'pageB',
-        meta: { title: '页面B'},
+        meta: { title: '页面B',icon:'hfun-screenfull-in'},
         component: Layout,
         children: [{
                 path: '/page5',
                 name: 'page5',
-                meta: { title: '页面五'},
+                meta: { title: '页面五',icon:'hfun-screenfull-in'},
                 component: () => import('../views/pageB/page5.vue'),
             },
             {
@@ -60,12 +71,12 @@ export const routes = [
                 name: 'page6',
                 redirect:'/page7',
                 component: EmptyLayout,
-                meta: { title: '页面六'},
+                meta: { title: '页面六',icon:'hfun-screenfull-in'},
                 children: [
                     { 
                         path: '/page7',
                         name: 'page7',
-                        meta: { title: '页面四'},
+                        meta: { title: '页面四',icon:'hfun-screenfull-in'},
                         component: () => import('../views/pageB/page7.vue'),
                     }
                 ]

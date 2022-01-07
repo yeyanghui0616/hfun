@@ -1,19 +1,52 @@
 //  导航栏高度
-$nav-height:60px;
+$hfun-topbar-height:60px;
 //  导航栏颜色
-$nav-background-color:#fff;
+$hfun-topbar-background-color:#fff;
 //  菜单文字颜色
-$menu-text-color: #fff;
+$hfun-menu-text-color: #fff;
 //  菜单选中文字颜色
-$menu-active-text-color: hsla(0, 0%, 100%, 0.95);
+$hfun-menu-active-text-color: hsla(0, 0%, 100%, 0.95);
 //  菜单背景色
-$menu-background-color: #ff0;
+$hfun-menu-background-color: #ff0;
+//  面包屑颜色
+$hfun-breadcrumd-color: #EDEDED;
+//  侧边栏图标颜色
+$hfun-sidebar-item-svgicon-color: #000;
+//  标签栏背景色
+$hfun-tag-background:#fff;
+//  标签栏上边框样式
+$hfun-tag-border-top:1px solid #ededed;
+//  标签栏元素激活边框样式
+$hfun-tag-item-active-border:1px solid #41b584;
+//  标签栏元素默认边框样式
+$hfun-tag-item-default-border: 1px solid #dcdfe6;
+//  导航栏背景颜色（面包屑）
+$hfun-navbar-background:#fff;
+//  全屏/主题/刷新icon颜色
+$hfun-navbar-right-icon-color:#000;
+//  侧边栏元素hover背景色
+$hfun-sidebar-item-hover-background:#41b584;
+//  侧边栏元素active背景色
+$hfun-sidebar-item-active-background:#41b584;
+//  侧边栏元素hover时图标前景色
+$hfun-sidebar-item-hover-svgicon-color:#fff;
+//  侧边栏元素active时图标前景色
+$hfun-sidebar-item-active-svgicon-color:#fff;
+//  侧边栏元素active前景色
+$hfun-sidebar-item-active-color:#fff;
+//  侧边栏元素hover前景色
+$hfun-sidebar-item-hover-color:#fff;
+//  appmain页面内容背景色
+$hfun-appmain-background:rgb(245, 245, 245);
+
+
+
 
 :export {
     //菜单文字颜色变量导出
-    menu-text-color: $menu-text-color;
+    hfun-menu-text-color: $hfun-menu-text-color;
     //菜单选中文字颜色变量导出
-    menu-active-text-color: $menu-active-text-color;
+    hfun-menu-active-text-color: $hfun-menu-active-text-color;
     //菜单背景色变量导出
-    menu-background-color: $menu-background-color;
+    hfun-menu-background-color: $hfun-menu-background-color;
 }

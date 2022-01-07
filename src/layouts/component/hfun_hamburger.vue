@@ -6,7 +6,7 @@
 -->
 
 <template>
-    <el-icon class='hamburger' @click="changeIsOpenSideBarState" v-if="$store.state.hfun_tag.mIsOpenSideBar == 'true'"><expand /></el-icon>
+    <el-icon class='hamburger' @click="changeIsOpenSideBarState" v-if="$store.state.hfun_layout.mIsOpenSideBar == 'true'"><expand /></el-icon>
     <el-icon class='hamburger' @click="changeIsOpenSideBarState" v-else><fold /></el-icon>
 </template>
 
@@ -14,16 +14,16 @@
     import {
         Fold, 
         Expand
-    } from '@element-plus/icons'
+    } from '@element-plus/icons-vue'
     import { useStore } from "vuex";
 
     const $store = useStore()
     const onSelectMenu = (index,indexPath,item,routeResult)=>{
-        $store.dispatch('hfun_tag/handleAddTab',indexPath)
+        $store.dispatch('hfun_layout/handleAddTab',indexPath)
     }
     
     const changeIsOpenSideBarState = () => {
-        $store.dispatch('hfun_tag/changeIsOpenSideBarState')
+        $store.dispatch('hfun_layout/changeIsOpenSideBarState')
     }
 </script>
 

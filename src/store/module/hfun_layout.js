@@ -1,11 +1,12 @@
 import { routes } from '@/router/index'
 import { setStorage, getStorage } from '@/utils/hfun_session_storage'
+
+
+let defaultRoute = getDefaultRoute() // 默认首页路由
+console.log('defaultRoute',defaultRoute)
 const state = {
     mTabSelections:getStorage('mTabSelections') || [
-        {
-            title: "首页",
-            path: "/"
-        }
+        defaultRoute
     ], // 全部的待选标签数组
     mTabActivePath:getStorage('mTabActivePath') || '/', // 当前活跃的tab标签
     mIsOpenSideBar:getStorage('mIsOpenSideBar') || 'true', // 当前是否展开左侧侧边栏
@@ -44,6 +45,54 @@ const mutations = {
                 setStorage('mTabActivePath',state.mTabActivePath)
             }
         }
+    },
+
+    /**
+     * @Description: 关闭其他
+     */  
+    handleTabCloseOthers(state){
+        let activeRoute = null;
+        state.mTabSelections.forEach((element,index) => {
+            if(element.path == state.mTabActivePath){
+                activeRoute = element
+            }
+        });
+        state.mTabSelections = []
+        state.mTabSelections.push(activeRoute)
+        setStorage('mTabSelections',state.mTabSelections)
+    },
+
+    /**
+     * @Description: 关闭左侧
+     */  
+     handleTabCloseLeft(state){
+        let activeRouterIndex = state.mTabSelections.findIndex((value, index, arr)=>{
+            return value.path == state.mTabActivePath
+        })
+        state.mTabSelections.splice(0,activeRouterIndex)
+        setStorage('mTabSelections',state.mTabSelections)
+    },
+
+    /**
+     * @Description: 关闭右侧
+     */  
+     handleTabCloseRight(state){
+        let activeRouterIndex = state.mTabSelections.findIndex((value, index, arr)=>{
+            return value.path == state.mTabActivePath
+        })
+        state.mTabSelections.splice(activeRouterIndex+1)
+        setStorage('mTabSelections',state.mTabSelections)
+    },
+
+    /**
+     * @Description: 关闭全部
+     */  
+     handleTabCloseAll(state){
+        state.mTabSelections = []
+        state.mTabSelections.push(defaultRoute)
+        state.mTabActivePath = '/'
+        setStorage('mTabSelections',state.mTabSelections)
+        setStorage('mTabActivePath',state.mTabActivePath)
     },
 
     /**
@@ -107,6 +156,18 @@ const actions = {
     changeSystemTheme(context,theme) {
         context.commit('changeSystemTheme',theme)
     },
+    handleTabCloseOthers(context) {
+        context.commit('handleTabCloseOthers')
+    },
+    handleTabCloseLeft(context) {
+        context.commit('handleTabCloseLeft')
+    },
+    handleTabCloseRight(context) {
+        context.commit('handleTabCloseRight')
+    },
+    handleTabCloseAll(context) {
+        context.commit('handleTabCloseAll')
+    },
 }
 
 /**
@@ -114,12 +175,17 @@ const actions = {
  * @Author: yeyanghui
  */ 
 function getRouteName(state,indexPath,iPath,index,routes){
+    console.log('indexPathss',indexPath)
     routes.forEach(item=>{
-        if(item.path == iPath){
+        if(item.path == iPath || item.redirect == iPath ){
             if(index < indexPath.length-1){
                 getRouteName(state,indexPath,indexPath[index+1],index+1,item.children)
             }else{
-                addRouteToTabSelection(state,item?.meta?.title,iPath)
+                if(item.redirect){
+                    addRouteToTabSelection(state,item?.meta?.title || item?.children[0]?.meta?.title,item.redirect)
+                }else{
+                    addRouteToTabSelection(state,item?.meta?.title || item?.children[0]?.meta?.title,iPath)
+                }
             }
         }
     })
@@ -139,6 +205,21 @@ function addRouteToTabSelection(state,title,iPath){
     }
     state.mTabActivePath = iPath
     setStorage('mTabActivePath',state.mTabActivePath)
+}
+
+// 拿到默认首页路由
+function getDefaultRoute(){
+    let obj = null
+    routes.forEach(item=>{
+        if(item.path == '/'){
+            obj = {
+                title:item?.meta?.title || item?.children[0]?.meta?.title,
+                path:item?.redirect || item?.children[0]?.path
+            }
+            return 
+        }
+    })
+    return obj
 }
 
 export default {

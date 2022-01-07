@@ -1,20 +1,26 @@
-<!-- layout整体布局 -->
+<!--
+ * @Description: layout整体布局 
+ * @Author: yeyanghui
+ * @Date: 2021-11-16 09:07:35
+ * @LastEditTime: 2021-11-18 15:38:14
+-->
+
 <template>
-    <el-container v-if="$store.state.hfun_tag.mSystemTheme.mLayoutMode == 'horizontal'" class="mainHorizontal">
+    <el-container v-if="$store.state.hfun_layout.mSystemTheme.mLayoutMode == 'horizontal'" class="mainHorizontal">
         <el-header
             :class="{
-                'fixed-header': $store.state.hfun_tag.mSystemTheme.mIsFixHeader == 'true'
+                'fixed-header': $store.state.hfun_layout.mSystemTheme.mIsFixHeader == 'true'
             }"
         >
             <!-- 顶部导航栏 -->
             <hfunTopBar/>
             <!-- 标签页 -->
-            <hfunTag v-if="$store.state.hfun_tag.mSystemTheme.mIsShowTabsBar == 'true'"/>
+            <hfunTag v-if="$store.state.hfun_layout.mSystemTheme.mIsShowTabsBar == 'true'"/>
         </el-header>
         <el-main 
             :class="{
-                'fixed-main': $store.state.hfun_tag.mSystemTheme.mIsFixHeader == 'true',
-                'fixed-main-no-tag': $store.state.hfun_tag.mSystemTheme.mIsShowTabsBar == 'false',
+                'fixed-main': $store.state.hfun_layout.mSystemTheme.mIsFixHeader == 'true',
+                'fixed-main-no-tag': $store.state.hfun_layout.mSystemTheme.mIsShowTabsBar == 'false',
             }"
         >
             <hfunAppMain/>
@@ -22,24 +28,24 @@
     </el-container>
     <el-container v-else class="mainVertical"
         :class="{
-            'fixed': $store.state.hfun_tag.mSystemTheme.mIsFixHeader == 'true',
-            'no-tabs-bar':  $store.state.hfun_tag.mSystemTheme.mIsShowTabsBar == 'false',
+            'fixed': $store.state.hfun_layout.mSystemTheme.mIsFixHeader == 'true',
+            'no-tabs-bar':  $store.state.hfun_layout.mSystemTheme.mIsShowTabsBar == 'false',
         }"
     >
-        <el-aside class="mainAside" :class="{ 'is-collapse': $store.state.hfun_tag.mIsOpenSideBar == 'true' }">
+        <el-aside class="mainAside" :class="{ 'is-collapse': $store.state.hfun_layout.mIsOpenSideBar == 'true' }">
             <!-- 侧边导航栏 -->
             <hfunSideBar/>
         </el-aside>
-        <el-container class="mainContain" :class="{ 'is-collapse': $store.state.hfun_tag.mIsOpenSideBar == 'true'}">
+        <el-container class="mainContain" :class="{ 'is-collapse': $store.state.hfun_layout.mIsOpenSideBar == 'true'}">
             <el-header
                 :class="{
-                    'fixed-header': $store.state.hfun_tag.mSystemTheme.mIsFixHeader == 'true'
+                    'fixed-header': $store.state.hfun_layout.mSystemTheme.mIsFixHeader == 'true'
                 }"
             >
                 <!-- 顶部导航栏 -->
                 <hfunNavBar/>
                 <!-- 标签页 -->
-                <hfunTag v-if="$store.state.hfun_tag.mSystemTheme.mIsShowTabsBar  == 'true'"/>
+                <hfunTag v-if="$store.state.hfun_layout.mSystemTheme.mIsShowTabsBar  == 'true'"/>
             </el-header>
             <el-main>
                 <hfunAppMain/>
@@ -63,6 +69,8 @@
     const $store = useStore()
 </script>
 <style scoped lang='scss'>
+    @import '@/styles/layout.scss';
+
     @mixin fix-header {
         position: fixed;
         top: 0;
@@ -74,12 +82,18 @@
     }
     @mixin active {
         &:hover {
-            color: #fff;
-            background-color:#41b584 !important;
+            color: $hfun-sidebar-item-hover-color;
+            background-color:$hfun-sidebar-item-hover-background !important;
+            .svg-icon{
+                color:$hfun-sidebar-item-hover-svgicon-color;
+            }
         }
         &.is-active {
-            color: #fff;
-            background-color: #41b584 !important;
+            color: $hfun-sidebar-item-active-color;
+            background-color: $hfun-sidebar-item-active-background !important;
+            .svg-icon{
+                color:$hfun-sidebar-item-active-svgicon-color
+            }
         }
     }
     
@@ -94,6 +108,7 @@
         }
         .fixed-main {
             padding-top: 120px;
+            background: $hfun-appmain-background;
         }
         .fixed-main.fixed-main-no-tag {
             padding-top: 65px;
@@ -109,8 +124,8 @@
         .mainContain {
             position: relative;
             min-height: 100%;
-            margin-left: 256px;;
-            background: #f6f8f9;
+            margin-left: 256px;
+            background: $hfun-appmain-background;
             &.is-collapse {
                 margin-left:65px;  
                 .fixed-header {

@@ -1,3 +1,10 @@
+<!--
+ * @Description: 页面全屏组件
+ * @Author: yeyh
+ * @Date: 2021-07-21 10:07:26
+ * @LastEditTime: 2021-11-12 17:20:25
+-->
+
 <template>
     <el-tooltip :content="!mIsScreenFull ? '全屏缩放' : '退出全屏'" effect="dark" placement="bottom">
         <svg-icon :name="!mIsScreenFull ?  'hfun-screenfull-in' : 'hfun-screenfull-out'" color="#fff" @click="toScreenFull"/>

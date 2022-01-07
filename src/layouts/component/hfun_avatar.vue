@@ -1,3 +1,10 @@
+<!--
+ * @Description: 用户头像组件
+ * @Author: yeyh
+ * @Date: 2021-07-21 10:07:26
+ * @LastEditTime: 2021-11-08 16:29:20
+-->
+
 <template>
   <el-dropdown>
     <span class="main">
@@ -22,7 +29,7 @@
   </el-dropdown>
 </template>
 <script setup>
-    import { ArrowDown } from '@element-plus/icons'
+    import { ArrowDown } from '@element-plus/icons-vue'
     import { ref } from 'vue'
 </script>
 <style lang="scss" scoped>

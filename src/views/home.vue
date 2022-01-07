@@ -1,4 +1,6 @@
 <template>
+{{$route.query}}
+{{$route.hash}}
     <h1>首页</h1>
     <h1>首页</h1>
     <h1>首页</h1>
@@ -60,7 +62,11 @@
 <script setup>
     import { ref } from 'vue'
     const count = ref(0)
+    // const color = ref('#f00')
 </script>
 
-<style scoped>
+<style vars="{ color }">
+/* h1{
+    color:var(--color)
+} */
 </style>

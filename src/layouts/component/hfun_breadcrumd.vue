@@ -1,3 +1,10 @@
+<!--
+ * @Description: 底部面包屑组件
+ * @Author: yeyh
+ * @Date: 2021-07-21 10:07:26
+ * @LastEditTime: 2021-11-08 16:29:20
+-->
+
 <template>
     <el-breadcrumb class="breadcrumb-container" separator=">">
         <el-breadcrumb-item v-for="item in mBreadcrumbList">
@@ -33,6 +40,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '@/styles/layout';
+
   .breadcrumb-container {
     height: 60px;
     font-size: 14px;
@@ -40,26 +49,11 @@
     margin-left:20px;
     ::v-deep {
       .el-breadcrumb__item {
-        .el-breadcrumb__inner {
-          a {
-            display: flex;
-            float: left;
-            font-weight: normal;
-            color: #515a6e;
-
-            i {
-              margin-right: 3px;
-            }
-          }
+        .el-breadcrumb__inner,
+        .el-breadcrumb__separator {
+          color: $hfun-breadcrumd-color;
         }
 
-        &:last-child {
-          .el-breadcrumb__inner {
-            a {
-              color: #999;
-            }
-          }
-        }
       }
     }
   }

@@ -1,3 +1,10 @@
+<!--
+ * @Description: 页面主题配置组件
+ * @Author: yeyh
+ * @Date: 2021-07-21 10:07:26
+ * @LastEditTime: 2021-11-12 17:20:25
+-->
+
 <template>
     <el-tooltip content="主题配置" effect="dark" placement="bottom">
         <svg-icon name="hfun-theme" color="#fff" @click="onShowThemeConfigPane"/>
@@ -65,14 +72,14 @@
         mIsShowTabsBar: 'true',
     })
     // 重新赋值，是为了避免修改配置项时，还未保存，vuex就响应式的改变layout布局了
-    theme.mThemeName = $store.state.hfun_tag.mSystemTheme.mThemeName
-    theme.mLayoutMode = $store.state.hfun_tag.mSystemTheme.mLayoutMode
-    theme.mIsFixHeader = $store.state.hfun_tag.mSystemTheme.mIsFixHeader
-    theme.mIsShowTabsBar = $store.state.hfun_tag.mSystemTheme.mIsShowTabsBar
+    theme.mThemeName = $store.state.hfun_layout.mSystemTheme.mThemeName
+    theme.mLayoutMode = $store.state.hfun_layout.mSystemTheme.mLayoutMode
+    theme.mIsFixHeader = $store.state.hfun_layout.mSystemTheme.mIsFixHeader
+    theme.mIsShowTabsBar = $store.state.hfun_layout.mSystemTheme.mIsShowTabsBar
 
     const handleSaveTheme = () => {
         mIsShowDrawer.value = false
-        $store.dispatch('hfun_tag/changeSystemTheme',theme)
+        $store.dispatch('hfun_layout/changeSystemTheme',theme)
         // document.getElementsByTagName(
         //   'body'
         // )[0].className = `hfun-admin-theme-default`

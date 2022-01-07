@@ -1,20 +1,24 @@
 {
-  "name": "yeyanghui-vite",
+  "name": "hfun-vite",
   "version": "0.1.0",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "serve": "vite preview --host 0.0.0.0"
+    "serve": "vite preview --host 0.0.0.0",
+    "mock": "json-server --watch --port 3003 --host 127.0.0.1 mock.js -r mock.json"
   },
   "dependencies": {
+    "@element-plus/icons-vue-vue": "^0.2.4",
     "element-plus": "^1.2.0-beta.3",
+    "nprogress": "^0.2.0",
     "screenfull": "^6.0.0",
     "vue": "^3.2.16",
-    "vuex": "^4.0.2",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.3",
+    "mockjs": "^1.1.0",
     "sass": "^1.43.4",
     "svg-sprite-loader": "^6.0.11",
     "vite": "^2.6.4"
