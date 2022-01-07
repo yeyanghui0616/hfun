@@ -8,7 +8,7 @@
     "mock": "json-server --watch --port 3003 --host 127.0.0.1 mock.js -r mock.json"
   },
   "dependencies": {
-    "@element-plus/icons-vue-vue": "^0.2.4",
+    "@element-plus/icons-vue": "^0.2.4",
     "element-plus": "^1.2.0-beta.3",
     "nprogress": "^0.2.0",
     "screenfull": "^6.0.0",
